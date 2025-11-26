@@ -44,6 +44,10 @@
     <Compile Include="ILogger.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Service\ProductService.cs" />
+    <Compile Include="Services\DiagnosticService.cs" />
+    <Compile Include="Services\ECUService.cs" />
+    <Compile Include="Services\SensorService.cs" />
+    <Compile Include="Services\VehicleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

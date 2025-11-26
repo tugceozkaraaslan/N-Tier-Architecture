@@ -41,7 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IDiagnosticCodeRepository.cs" />
+    <Compile Include="Interfaces\IECURepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
+    <Compile Include="Interfaces\ISensorRepository.cs" />
+    <Compile Include="Interfaces\IVehicleRepository.cs" />
+    <Compile Include="Repositories\DiagnosticCodeRepository.cs" />
+    <Compile Include="Repositories\ECURepository.cs" />
+    <Compile Include="Repositories\SensorRepository.cs" />
+    <Compile Include="Repositories\VehicleRepository.cs" />
     <Compile Include="Repostories\ProductRpository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
