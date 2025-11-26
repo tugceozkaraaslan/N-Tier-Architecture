@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiagnosticCode.cs" />
+    <Compile Include="ECU.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sensor.cs" />
+    <Compile Include="Vehicle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
