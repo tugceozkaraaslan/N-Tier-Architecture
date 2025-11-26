@@ -77,9 +77,11 @@ namespace NKM.BLL.Services
             if (sensor == null)
                 throw new Exception("Sensör bulunamadı.");
 
+            // Out of range değerler için geçici OutOfRange durumu kullanılır
+            // Sensör donanım arızası için ayrı MarkAsFaulty metodu kullanılmalı
             if (value < sensor.MinValue || value > sensor.MaxValue)
             {
-                sensor.Status = SensorStatus.Faulty;
+                sensor.Status = SensorStatus.OutOfRange;
             }
             else
             {
@@ -87,6 +89,19 @@ namespace NKM.BLL.Services
             }
 
             sensor.CurrentValue = value;
+            _repository.Update(sensor);
+        }
+
+        /// <summary>
+        /// Sensörü arızalı olarak işaretle - donanım hatası tespit edildiğinde kullanılır
+        /// </summary>
+        public void MarkAsFaulty(int sensorId)
+        {
+            var sensor = _repository.GetById(sensorId);
+            if (sensor == null)
+                throw new Exception("Sensör bulunamadı.");
+
+            sensor.Status = SensorStatus.Faulty;
             _repository.Update(sensor);
         }
 

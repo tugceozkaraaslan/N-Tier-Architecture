@@ -53,6 +53,7 @@ namespace NKM.Entities
         Active,      // Aktif
         Inactive,    // Pasif
         Faulty,      // Arızalı
-        Calibrating  // Kalibrasyon
+        Calibrating, // Kalibrasyon
+        OutOfRange   // Aralık Dışı - geçici durum
     }
 }

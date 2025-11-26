@@ -633,9 +633,9 @@ namespace NKM.ConsoleUI
                         Console.Write("Ürün adı: ");
                         string name = Console.ReadLine();
                         Console.Write("Fiyat: ");
-                        decimal price = Convert.ToDecimal(Console.ReadLine());
+                        double price = Convert.ToDouble(Console.ReadLine());
 
-                        Product p = new Product { Name = name, Price = (double)price };
+                        Product p = new Product { Name = name, Price = price };
                         productService.AddProduct(p);
                         Console.WriteLine("✓ Ürün eklendi! / Product added!");
                     }

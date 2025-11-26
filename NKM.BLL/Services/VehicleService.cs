@@ -25,8 +25,8 @@ namespace NKM.BLL.Services
         {
             if (string.IsNullOrWhiteSpace(vehicle.VIN))
                 throw new Exception("VIN numarası boş olamaz.");
-            if (vehicle.VIN.Length != 17)
-                throw new Exception("VIN numarası 17 karakter olmalıdır.");
+            if (!IsValidVIN(vehicle.VIN))
+                throw new Exception("Geçersiz VIN formatı. VIN 17 karakter olmalı ve I, O, Q harfleri içermemelidir.");
             if (string.IsNullOrWhiteSpace(vehicle.Brand))
                 throw new Exception("Marka bilgisi boş olamaz.");
             if (string.IsNullOrWhiteSpace(vehicle.Model))
@@ -40,6 +40,31 @@ namespace NKM.BLL.Services
                 throw new Exception("Bu VIN numarasına sahip araç zaten kayıtlı.");
 
             _repository.Add(vehicle);
+        }
+
+        /// <summary>
+        /// ISO 3779 standardına göre VIN format doğrulaması
+        /// </summary>
+        private bool IsValidVIN(string vin)
+        {
+            if (string.IsNullOrWhiteSpace(vin))
+                return false;
+            
+            if (vin.Length != 17)
+                return false;
+
+            // ISO 3779: VIN'de I, O, Q harfleri kullanılamaz (0, 1 ile karışıklık önlemek için)
+            foreach (char c in vin.ToUpper())
+            {
+                if (c == 'I' || c == 'O' || c == 'Q')
+                    return false;
+                
+                // Sadece alfanumerik karakterler
+                if (!char.IsLetterOrDigit(c))
+                    return false;
+            }
+
+            return true;
         }
 
         public void UpdateVehicle(Vehicle vehicle)
